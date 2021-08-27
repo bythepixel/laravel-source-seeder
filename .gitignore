@@ -1,0 +1,17 @@
+/node_modules/
+/vendor/
+/public/js
+/public/css
+/public/build
+/public/mix-manifest.json
+/public/storage
+/resources/views/vendor
+/storage/*.key
+.DS_Store
+.env
+.env.backup
+.idea
+.vagrant
+composer.lock
+npm-debug.log
+yarn-error.log

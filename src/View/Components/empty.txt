@@ -1,0 +1,5 @@
+Place Laravel View Component Class Files in this directory.
+
+This .txt file only exists to show intended directory structure and has no real purpose.
+
+If your package does NOT have any View Component Classes, you can delete this directory.

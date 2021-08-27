@@ -1,0 +1,5 @@
+Place Laravel Configuration Files in this directory.
+
+This .txt file only exists to show intended directory structure and has no real purpose.
+
+If your package does NOT have any Configuration, you can delete this directory.
