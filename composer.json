@@ -1,22 +1,23 @@
 {
-  "name": "bythepixel/nova-page-elements",
-  "description": "A base repository template for creating BTP Laravel Packages",
-  "homepage": "https://github.com/bythepixel/btp-laravel-package-base",
+  "name": "bythepixel/laravel-source-seeder",
+  "description": "Laravel Seeder that allows for simple importing/exporting of database state from/to a given environment using a standardized workflow.",
+  "homepage": "https://github.com/bythepixel/laravel-source-seeder",
   "license": "MIT",
   "keywords": [
     "bythepixel",
-    "laravel"
+    "laravel",
+    "seeder"
   ],
   "require": {
     "php": "^7.4|^8.0",
     "illuminate/database": "^7.0|^8.0",
     "illuminate/support": "^7.0|^8.0",
     "laravel/framework": "^7.0|^8.0",
-    "laravel/nova": "^3.0"
+    "league/flysystem-aws-s3-v3": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "PackageName\\": "src"
+      "LaravelSourceSeeder\\": "src"
     }
   },
   "config": {
@@ -25,7 +26,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "PackageName\\PackageNameServiceProvider"
+        "LaravelSourceSeeder\\LaravelSourceSeederServiceProvider"
       ]
     }
   },

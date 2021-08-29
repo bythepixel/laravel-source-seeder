@@ -1,5 +1,0 @@
-Place Laravel Scope Files in this directory.
-
-This .txt file only exists to show intended directory structure and has no real purpose.
-
-If your package does NOT have any Scopes, you can delete this directory.

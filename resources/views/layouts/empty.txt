@@ -1,5 +1,0 @@
-Place Laravel View Layout Blade Files in this directory.
-
-This .txt file only exists to show intended directory structure and has no real purpose.
-
-If your package does NOT have any View Layout Blades, you can delete this directory.
