@@ -1,8 +1,6 @@
 <?php
 
-namespace Database\Seeders;
-
-use LaravelSourceSeeder\SourceSeederInternal;
+namespace LaravelSourceSeeder;
 
 abstract class SourceSeeder extends SourceSeederInternal
 {
