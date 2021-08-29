@@ -19,8 +19,8 @@ class LaravelSourceSeederServiceProvider extends ServiceProvider
 
         // Publish Package Database Seeders
         $this->publishes([
-            __DIR__ . "SourceSeeder.php" => database_path("seeders/SourceSeeder.php"),
-        ], 'seeder');
+            __DIR__ . '/SourceSeeder.php' => database_path('seeders/SourceSeeder.php'),
+        ], 'laravel-source-seeder');
     }
 
     /**
