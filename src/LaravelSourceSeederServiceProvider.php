@@ -16,11 +16,6 @@ class LaravelSourceSeederServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([BuildSeederSourceFiles::class]);
         }
-
-        // Publish Package Database Seeders
-        $this->publishes([
-            __DIR__ . '/SourceSeeder.php' => database_path('seeders/SourceSeeder.php'),
-        ], 'laravel-source-seeder');
     }
 
     /**
