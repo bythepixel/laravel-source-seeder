@@ -2,6 +2,19 @@
 Laravel Seeder that allows for simple importing/exporting of database state from/to a given environment using a 
 standardized workflow.
 
+## Installation
+Add the following snippet to your Application's `composer.json` in `repositories`
+```
+{
+  "type": "vcs",
+  "url": "git@github.com:bythepixel/laravel-source-seeder.git"
+}
+```
+
+Next, run this command:
+- `composer require bythepixel/laravel-source-seeder -n`
+- Note: `-n` is very important :D
+
 ## Export Seeder Source Files (.json)
 - `php artisan seeder:build {table?}`
 - Generates .json files for all relevant tables (or as passed in by the table parameter)
