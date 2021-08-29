@@ -24,6 +24,7 @@ Next, run this command:
   
   
 ## Example Seeder Class Implementation
+Path: `database/seeders/LocationSeeder.php`
 ```
 <?php
 
