@@ -12,8 +12,7 @@ Add the following snippet to your Application's `composer.json` in `repositories
 ```
 
 Next, run this command:
-- `composer require bythepixel/laravel-source-seeder -n`
-- Note: `-n` is very important :D
+- `composer require bythepixel/laravel-source-seeder`
 
 ## Export Seeder Source Files (.json)
 - `php artisan seeder:build {table?}`
