@@ -6,8 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 class SourceSeederInternal extends Seeder
 {
@@ -25,7 +25,7 @@ class SourceSeederInternal extends Seeder
 
     public function run()
     {
-        $fs = new Filesystem(new Local(database_path('seeders/Source')));
+        $fs = new Filesystem(new LocalFilesystemAdapter(database_path('seeders/Source')));
         $type = $this->getType();
 
         try {
