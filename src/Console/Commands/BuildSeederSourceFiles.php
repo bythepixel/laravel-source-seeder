@@ -4,8 +4,8 @@ namespace LaravelSourceSeeder\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 class BuildSeederSourceFiles extends Command
 {
@@ -20,7 +20,7 @@ class BuildSeederSourceFiles extends Command
     public function handle()
     {
         $targetTable = $this->argument('table');
-        $fs = new Filesystem(new Local(database_path('seeders/Source')));
+        $fs = new Filesystem(new LocalFilesystemAdapter(database_path('seeders/Source')));
 
         $tables = $targetTable === null ? $this->tables : [$targetTable];
 
