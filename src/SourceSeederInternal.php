@@ -30,7 +30,7 @@ class SourceSeederInternal extends Seeder
 
         try {
             $json = $fs->read("$type.json");
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $message = "Warning: Seeder Source does not exist for $type";
             Log::warning($message);
             echo "$message\n";

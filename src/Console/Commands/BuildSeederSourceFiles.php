@@ -45,7 +45,11 @@ class BuildSeederSourceFiles extends Command
             return;
         }
 
-        $sourceFs->put("$table.json", $json);
+        try {
+            $sourceFs->write("$table.json", $json);
+        } catch(\Throwable $e) {
+            $this->error($e->getMessage());
+        }
 
         $this->info("Successfully built seeder for $table");
     }
