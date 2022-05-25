@@ -16,6 +16,10 @@ class LaravelSourceSeederServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([BuildSeederSourceFiles::class]);
         }
+
+        $this->publishes([
+            __DIR__.'/../config/source-seeder.php' => config_path('source-seeder.php'),
+        ]);
     }
 
     /**
@@ -23,6 +27,8 @@ class LaravelSourceSeederServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/source-seeder.php', 'source-seeder'
+        );
     }
 }

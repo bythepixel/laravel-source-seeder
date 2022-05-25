@@ -25,7 +25,7 @@ class SourceSeederInternal extends Seeder
 
     public function run()
     {
-        $fs = new Filesystem(new LocalFilesystemAdapter(database_path('seeders/Source')));
+        $fs = new Filesystem(new LocalFilesystemAdapter(database_path(config('source-seeder.directory'))));
         $type = $this->getType();
 
         try {
