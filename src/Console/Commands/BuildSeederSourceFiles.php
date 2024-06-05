@@ -2,10 +2,14 @@
 
 namespace LaravelSourceSeeder\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
+use Illuminate\{
+    Console\Command,
+    Support\Facades\DB
+};
+use League\Flysystem\{
+    Local\LocalFilesystemAdapter,
+    Filesystem
+};
 
 class BuildSeederSourceFiles extends Command
 {
@@ -20,7 +24,7 @@ class BuildSeederSourceFiles extends Command
     public function handle()
     {
         $targetTable = $this->argument('table');
-        $fs = new Filesystem(new Local(database_path('seeders/Source')));
+        $fs = new Filesystem(new LocalFilesystemAdapter(database_path('seeders/Source')));
 
         $tables = $targetTable === null ? $this->tables : [$targetTable];
 
@@ -45,7 +49,7 @@ class BuildSeederSourceFiles extends Command
             return;
         }
 
-        $sourceFs->put("$table.json", $json);
+        $sourceFs->write("$table.json", $json);
 
         $this->info("Successfully built seeder for $table");
     }
