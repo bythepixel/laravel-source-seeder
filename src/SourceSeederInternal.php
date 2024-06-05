@@ -2,16 +2,12 @@
 
 namespace LaravelSourceSeeder;
 
-use Illuminate\{
-    Database\Seeder,
-    Support\Facades\DB,
-    Support\Facades\Log,
-    Support\Str,
-};
-use League\Flysystem\{
-    Local\LocalFilesystemAdapter,
-    Filesystem
-};
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 
 class SourceSeederInternal extends Seeder
 {
@@ -29,7 +25,7 @@ class SourceSeederInternal extends Seeder
 
     public function run()
     {
-        $fs = new Filesystem(new LocalFilesystemAdapter(database_path('seeders/Source')));
+        $fs = new Filesystem(new Local(database_path('seeders/Source')));
         $type = $this->getType();
 
         try {
