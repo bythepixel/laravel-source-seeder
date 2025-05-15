@@ -9,7 +9,7 @@ use League\Flysystem\Filesystem;
 
 class BuildSeederSourceFiles extends Command
 {
-    protected $signature = 'seeders:build {table?}';
+    protected $signature = 'seeders:build {table?} {--connection= : The database connection to use}';
 
     protected $description = 'Build source files for specified table. If no parameter is passed, all versioned database tables will be built.';
 
@@ -20,7 +20,8 @@ class BuildSeederSourceFiles extends Command
     public function handle()
     {
         $targetTable = $this->argument('table');
-        $fs = new Filesystem(new Local(database_path('seeders/Source')));
+        $path = $this->getSourcePath();
+        $fs = new Filesystem(new Local($path));
 
         $tables = $targetTable === null ? $this->tables : [$targetTable];
 
@@ -32,7 +33,8 @@ class BuildSeederSourceFiles extends Command
     private function buildTable(string $table, Filesystem $sourceFs)
     {
         $data = [];
-        $result = DB::table($table)->get('*');
+        $connection = $this->option('connection') ?: config('database.default');
+        $result = DB::connection($connection)->table($table)->get('*');
 
         foreach ($result as $row) {
             $data[] = (array)$row;
@@ -48,5 +50,15 @@ class BuildSeederSourceFiles extends Command
         $sourceFs->put("$table.json", $json);
 
         $this->info("Successfully built seeder for $table");
+    }
+
+    private function getSourcePath(): string
+    {
+        $path = database_path('seeders/Source');
+        if ($this->hasOption('connection')) {
+            $path .= DIRECTORY_SEPARATOR . $this->option('connection');
+        }
+
+        return $path;
     }
 }

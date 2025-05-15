@@ -25,13 +25,15 @@ class SourceSeederInternal extends Seeder
 
     public function run()
     {
-        $fs = new Filesystem(new Local(database_path('seeders/Source')));
+        $path = $this->getSourcePath();
+
+        $fs = new Filesystem(new Local($path));
         $type = $this->getType();
 
         try {
             $json = $fs->read("$type.json");
         } catch (\Exception $e) {
-            $message = "Warning: Seeder Source does not exist for $type";
+            $message = "Warning: Seeder Source does not exist for $type at $path";
             Log::warning($message);
             echo "$message\n";
             return;
@@ -52,5 +54,16 @@ class SourceSeederInternal extends Seeder
                 DB::table($type)->insert($row);
             }
         }
+    }
+
+    private function getSourcePath(): string
+    {
+        $path = 'seeders/Source';
+        if ($this->command->hasOption('database')) {
+            $connection = $this->command->option('database');
+            $path .= DIRECTORY_SEPARATOR . $connection;
+        }
+
+        return $path;
     }
 }

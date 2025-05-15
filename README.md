@@ -15,13 +15,14 @@ Next, run this command:
 - `composer require bythepixel/laravel-source-seeder`
 
 ## Export Seeder Source Files (.json)
-- `php artisan seeder:build {table?}`
+- `php artisan seeder:build {table?} {--connection=}`
 - Generates .json files for all relevant tables (or as passed in by the table parameter)
 - This command will typically be executed on a production environment to export "real" production data
 - Once files have been generated they can be committed to the repository allowing new environments to be up to date
 - If executed on a remote environment, `scp` is recommended to copy the json files
   - `scp -rp ./database/seeders/Source <user>@<public_ip>:/srv/www/database/seeders/Source`
-  
+- When a connection is specified, the seeder will use that connection to export data. The file will be stored in the 
+  `database/seeders/Source/{connection}` directory.
   
 ## Example Seeder Class Implementation
 Path: `database/seeders/LocationSeeder.php`
