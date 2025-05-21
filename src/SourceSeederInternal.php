@@ -30,7 +30,7 @@ class SourceSeederInternal extends Seeder
     public function run()
     {
         $path = $this->getSourcePath();
-        $fs = new Filesystem(new LocalFilesystemAdapter(database_path($path)));
+        $fs = new Filesystem(new LocalFilesystemAdapter($path));
         $type = $this->getType();
 
         try {
@@ -61,7 +61,7 @@ class SourceSeederInternal extends Seeder
 
     private function getSourcePath(): string
     {
-        $path = 'seeders/Source';
+        $path = database_path('seeders/Source');
         if ($this->command->hasOption('database')) {
             $connection = $this->command->option('database');
             $path .= DIRECTORY_SEPARATOR . $connection;

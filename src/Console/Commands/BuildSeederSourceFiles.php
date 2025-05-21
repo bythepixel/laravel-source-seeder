@@ -25,7 +25,7 @@ class BuildSeederSourceFiles extends Command
     {
         $targetTable = $this->argument('table');
         $path = $this->getSourcePath();
-        $fs = new Filesystem(new LocalFilesystemAdapter(database_path($path)));
+        $fs = new Filesystem(new LocalFilesystemAdapter($path));
 
         $tables = $targetTable === null ? $this->tables : [$targetTable];
 
